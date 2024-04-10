@@ -1,0 +1,62 @@
+{
+  "version": "v2.11.0",
+  "name": "RalFunctions",
+  "bytecode": "0203091e4034010000000102ce000201000001010800001342582c17001600a100a0000201000001020913406417000000181600a100a0000302",
+  "codeHash": "5bab07d81a5c011886a3756e6687d9cc0dc9a23093b9d09af835b0bbd8bcb30e",
+  "fieldsSig": {
+    "names": [
+      "time",
+      "result"
+    ],
+    "types": [
+      "U256",
+      "U256"
+    ],
+    "isMutable": [
+      false,
+      true
+    ]
+  },
+  "eventsSig": [],
+  "functions": [
+    {
+      "name": "getTime",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "U256"
+      ]
+    },
+    {
+      "name": "getResult",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "U256"
+      ]
+    },
+    {
+      "name": "doCalc",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "U256",
+        "Bool"
+      ]
+    }
+  ],
+  "constants": [],
+  "enums": []
+}

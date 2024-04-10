@@ -60,6 +60,10 @@ export namespace RalphTypesTypes {
       params: Omit<CallContractParams<{}>, "args">;
       result: CallContractResult<[bigint, bigint, bigint, bigint]>;
     };
+    getIndex: {
+      params: CallContractParams<{ index: bigint }>;
+      result: CallContractResult<bigint>;
+    };
   }
   export type CallMethodParams<T extends keyof CallMethodTable> =
     CallMethodTable[T]["params"];
@@ -130,6 +134,14 @@ class Factory extends ContractFactory<
     > => {
       return testMethod(this, "getArray", params);
     },
+    getIndex: async (
+      params: TestContractParamsWithoutMaps<
+        RalphTypesTypes.Fields,
+        { index: bigint }
+      >
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getIndex", params);
+    },
   };
 }
 
@@ -137,8 +149,8 @@ class Factory extends ContractFactory<
 export const RalphTypes = new Factory(
   Contract.fromJson(
     RalphTypesContractJson,
-    "=4-2=2-2+3=1-3=3-1+d=3-1+6404f405e=11-1+c=34+00a0007e02165468652063757272656e7420726573756c7420697320=86",
-    "688ed360a47801564b01fe830a5800cc72ce80bee978f937f0600797331f2c17",
+    "=4-2=2-2+38=2-2=1-3+1=3-1+a=3+340=1+24072=11-1+f=42+00a0007e02165468652063757272656e7420726573756c7420697320=118",
+    "bb838bb8a9567f71fa2e05010991fa0a7191e9dae1b8a5a2168002f41156db78",
     AllStructs
   )
 );
@@ -195,6 +207,17 @@ export class RalphTypesInstance extends ContractInstance {
         this,
         "getArray",
         params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+    getIndex: async (
+      params: RalphTypesTypes.CallMethodParams<"getIndex">
+    ): Promise<RalphTypesTypes.CallMethodResult<"getIndex">> => {
+      return callMethod(
+        RalphTypes,
+        this,
+        "getIndex",
+        params,
         getContractByCodeHash
       );
     },

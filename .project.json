@@ -11,7 +11,7 @@
   "infos": {
     "Foo": {
       "sourceFile": "datatypes/types.ral",
-      "sourceCodeHash": "5be604828d94b077d2f4acc950caffc64809297eff24f9086739f67ca46f89db",
+      "sourceCodeHash": "b8052c6d193f99c25adbf912015e1cbf4013782c18d174bcd6331b94e599d07a",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
       "warnings": []
@@ -32,9 +32,9 @@
     },
     "RalphTypes": {
       "sourceFile": "datatypes/types.ral",
-      "sourceCodeHash": "5be604828d94b077d2f4acc950caffc64809297eff24f9086739f67ca46f89db",
-      "bytecodeDebugPatch": "=4-2=2-2+3=1-3=3-1+d=3-1+6404f405e=11-1+c=34+00a0007e02165468652063757272656e7420726573756c7420697320=86",
-      "codeHashDebug": "688ed360a47801564b01fe830a5800cc72ce80bee978f937f0600797331f2c17",
+      "sourceCodeHash": "b8052c6d193f99c25adbf912015e1cbf4013782c18d174bcd6331b94e599d07a",
+      "bytecodeDebugPatch": "=4-2=2-2+38=2-2=1-3+1=3-1+a=3+340=1+24072=11-1+f=42+00a0007e02165468652063757272656e7420726573756c7420697320=118",
+      "codeHashDebug": "bb838bb8a9567f71fa2e05010991fa0a7191e9dae1b8a5a2168002f41156db78",
       "warnings": []
     },
     "TokenFaucet": {

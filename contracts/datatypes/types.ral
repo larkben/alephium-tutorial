@@ -13,7 +13,7 @@ Contract RalphTypes (
     pub fn getTime(x: U256) -> () {
         let mut tempfoo = Foo{x: 5, y: 7}
 
-        tempfoo.y = 
+        tempfoo.y = getIndex(1) * x
 
         result = time * tempfoo.y
 
@@ -36,7 +36,7 @@ Contract RalphTypes (
         return array
     }
 
-    fn getIndex(index: U256) -> (U256) {
+    pub fn getIndex(index: U256) -> (U256) {
         return array[index]
     } 
 }
