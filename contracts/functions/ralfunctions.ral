@@ -1,0 +1,30 @@
+// Ralph Functions
+
+Contract RalFunctions (
+    time: U256,
+    mut result: U256
+) {
+    pub fn getTime() -> U256 {
+        return time
+    }
+
+    @using(updateFields = true, checkExternalCaller = false)
+    pub fn getResult() -> U256 {
+        let temp = getTime() * 600
+
+        result = temp
+
+        return result
+    }
+
+    @using(updateFields = true, checkExternalCaller = false)
+    pub fn doCalc() -> (U256, Bool) {
+        let tempTwo = 100
+
+        let _ = getTime()
+
+        result = tempTwo
+
+        return result, true
+    }
+}
