@@ -47,13 +47,25 @@ describe('unit tests', () => {
     expect(contractState.address).toEqual(testContractAddress)
     expect(contractState.fields.time).toEqual(20n)
     // time * tempfoo 
-    expect(contractState.fields.result).toEqual(20n) // if result is not equal to zero the test fails
+    expect(contractState.fields.result).toEqual(40n) // if result is not equal to zero the test fails
 
     // the test framework support debug messages too
     // debug will be disabled automatically at the deployment to real networks
     expect(testResult.debugMessages).toEqual([
-      { contractAddress: testContractAddress, message: 'The current result is 20' } // evaluate to true
+      { contractAddress: testContractAddress, message: 'The current result is 40' } // evaluate to true
     ])
+  })
+
+  it('youtube example', async () => {
+    const testParams = testParamsFixture
+    const testResult = await RalphTypes.tests.getIndex(testParams)
+
+    // only one contract involved in the test
+    const contractState = testResult.contracts[0] as RalphTypesTypes.State // get contract state
+    expect(contractState.address).toEqual(testContractAddress)
+    expect(contractState.fields.array[0]).toEqual(1n)
+    // index(x)
+    expect(contractState.fields.result).toEqual(2n) // if result is not equal to zero the test fails
   })
 })
 

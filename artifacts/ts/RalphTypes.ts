@@ -61,7 +61,7 @@ export namespace RalphTypesTypes {
       result: CallContractResult<[bigint, bigint, bigint, bigint]>;
     };
     getIndex: {
-      params: CallContractParams<{ index: bigint }>;
+      params: CallContractParams<{ x: bigint }>;
       result: CallContractResult<bigint>;
     };
   }
@@ -137,7 +137,7 @@ class Factory extends ContractFactory<
     getIndex: async (
       params: TestContractParamsWithoutMaps<
         RalphTypesTypes.Fields,
-        { index: bigint }
+        { x: bigint }
       >
     ): Promise<TestContractResultWithoutMaps<bigint>> => {
       return testMethod(this, "getIndex", params);
@@ -149,8 +149,8 @@ class Factory extends ContractFactory<
 export const RalphTypes = new Factory(
   Contract.fromJson(
     RalphTypesContractJson,
-    "=4-2=2-2+38=2-2=1-3+1=3-1+a=3+340=1+24072=11-1+f=42+00a0007e02165468652063757272656e7420726573756c7420697320=118",
-    "bb838bb8a9567f71fa2e05010991fa0a7191e9dae1b8a5a2168002f41156db78",
+    "=4-2=2-2+38=2-2+41=2-2+4a=2+53=1+0=1+2=2-2+7d=11-1+f=42+00a0007e02165468652063757272656e7420726573756c7420697320=140",
+    "3b5613fa056fb4d4b6f20315fd1bb294cb3d47dbe129e1083e392ec0d6dae3dd",
     AllStructs
   )
 );

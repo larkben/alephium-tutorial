@@ -36,7 +36,11 @@ Contract RalphTypes (
         return array
     }
 
-    pub fn getIndex(index: U256) -> (U256) {
-        return array[index]
+    @using(updateFields = true, checkExternalCaller = false)
+    pub fn getIndex(x: U256) -> (U256) {
+
+        result = array[x]
+
+        return array[x]
     } 
 }
