@@ -1,4 +1,4 @@
-import { web3, Project, TestContractParams, addressFromContractId, AssetOutput, DUST_AMOUNT, groupOfAddress, stringToHex } from '@alephium/web3'
+import { web3, Project, TestContractParams, addressFromContractId, AssetOutput, DUST_AMOUNT, groupOfAddress, stringToHex, HexString } from '@alephium/web3'
 import { expectAssertionError, randomContractId, testAddress, testNodeWallet } from '@alephium/web3-test'
 import { deployToDevnet } from '@alephium/cli'
 //import { TokenFaucet, TokenFaucetTypes, Withdraw } from '../artifacts/ts' // Base Contracts
@@ -8,7 +8,7 @@ describe('unit tests', () => {
   let testContractId: string
   let testTokenId: string
   let testContractAddress: string
-  let testParamsFixture: TestContractParams<RalphTypesTypes.Fields, { x: bigint }>
+  let testParamsFixture: TestContractParams<RalphTypesTypes.Fields, { string: HexString }>
 
   // We initialize the fixture variables before all tests
   beforeAll(async () => {
@@ -25,19 +25,21 @@ describe('unit tests', () => {
       // initial state of the test contract
       initialFields: { // we will now add our contract variables
         time: 20n,
-        condition: true,
-        text: stringToHex("Hello World"),
+        condition: false,
+        text: "b26c23138eb1be574b26a2e3ae318203a8e504615e48ec5f40eaeee9229724d5",
         owner: testAddress,
         array: [1n,2n,3n,4n],
-        result: 0n
+        result: 0n,
+        hash: stringToHex("null")
       },
       // arguments to test the target function of the test contract
-      testArgs: { x: 1n },
+      testArgs: { string: stringToHex("nSfA!gS#@@gV^g((Z") },
       // assets owned by the caller of the function
       inputAssets: [{ address: testAddress, asset: { alphAmount: 10n ** 18n } }]
     }
   })
 
+  /*
   it('test math', async () => {
     const testParams = testParamsFixture
     const testResult = await RalphTypes.tests.getTime(testParams)
@@ -66,6 +68,18 @@ describe('unit tests', () => {
     expect(contractState.fields.array[0]).toEqual(1n)
     // index(x)
     expect(contractState.fields.result).toEqual(2n) // if result is not equal to zero the test fails
+  })
+  */
+
+  it('hashresult', async () => {
+    const testParams = testParamsFixture
+    const testResult = await RalphTypes.tests.compareHash(testParams)
+
+    // only one contract involved in the test
+    const contractState = testResult.contracts[0] as RalphTypesTypes.State // get contract state
+    expect(contractState.address).toEqual(testContractAddress)
+    expect(contractState.fields.hash).toEqual("b26c23138eb1be574b26a2e3ae318203a8e504615e48ec5f40eaeee9229724d5")
+    expect(contractState.fields.condition).toEqual(true) // true
   })
 })
 

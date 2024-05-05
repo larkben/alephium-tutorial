@@ -1,8 +1,8 @@
 {
   "version": "v2.11.0",
   "name": "RalphTypes",
-  "bytecode": "09061c4025402e40374046406101000103000d111307170217010d000516002c1702ce0016022ca100010000000102ce0102010000000102ce0202010000000102ce0302010000000405ce04ce05ce06ce070201000101011216007a10314d102acfa10016007a10314d102acf02",
-  "codeHash": "31f97f586bfb2d2763ec413b2ed6a03ef4022cae103c8ec486f39e2586fd12f3",
+  "bytecode": "0a081c4025402e403740464061407a408401000103000d111307170217010d000516002c1702ce0016022ca102010000000102a00002010000000102a00102010000000102ce0102010000000405ce02ce03ce04ce050201000101011216007a10314d0e2acfa10216007a10314d0e2acf0201000102000b16005017011601a1031601a001414c0203a1000100010100021600a101",
+  "codeHash": "ba78dcb322f96012f715d5d516f9799beae37c554e17b59c7e07a04ceea9b0be",
   "fieldsSig": {
     "names": [
       "time",
@@ -10,7 +10,8 @@
       "text",
       "owner",
       "array",
-      "result"
+      "result",
+      "hash"
     ],
     "types": [
       "U256",
@@ -18,14 +19,16 @@
       "ByteVec",
       "Address",
       "[U256;4]",
-      "U256"
+      "U256",
+      "ByteVec"
     ],
     "isMutable": [
       false,
+      true,
+      true,
       false,
       false,
-      false,
-      false,
+      true,
       true
     ]
   },
@@ -112,6 +115,38 @@
       "returnTypes": [
         "U256"
       ]
+    },
+    {
+      "name": "compareHash",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [
+        "string"
+      ],
+      "paramTypes": [
+        "ByteVec"
+      ],
+      "paramIsMutable": [
+        false
+      ],
+      "returnTypes": []
+    },
+    {
+      "name": "updateText",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [
+        "string"
+      ],
+      "paramTypes": [
+        "ByteVec"
+      ],
+      "paramIsMutable": [
+        false
+      ],
+      "returnTypes": []
     }
   ],
   "constants": [],

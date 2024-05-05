@@ -39,6 +39,7 @@ export namespace RalphTypesTypes {
     owner: Address;
     array: [bigint, bigint, bigint, bigint];
     result: bigint;
+    hash: HexString;
   };
 
   export type State = ContractState<Fields>;
@@ -142,6 +143,22 @@ class Factory extends ContractFactory<
     ): Promise<TestContractResultWithoutMaps<bigint>> => {
       return testMethod(this, "getIndex", params);
     },
+    compareHash: async (
+      params: TestContractParamsWithoutMaps<
+        RalphTypesTypes.Fields,
+        { string: HexString }
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "compareHash", params);
+    },
+    updateText: async (
+      params: TestContractParamsWithoutMaps<
+        RalphTypesTypes.Fields,
+        { string: HexString }
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "updateText", params);
+    },
   };
 }
 
@@ -149,8 +166,8 @@ class Factory extends ContractFactory<
 export const RalphTypes = new Factory(
   Contract.fromJson(
     RalphTypesContractJson,
-    "=4-2=2-2+38=2-2+41=2-2+4a=2+53=1+0=1+2=2-2+7d=11-1+f=42+00a0007e02165468652063757272656e7420726573756c7420697320=140",
-    "3b5613fa056fb4d4b6f20315fd1bb294cb3d47dbe129e1083e392ec0d6dae3dd",
+    "=4+4038404=1-1=2-1+4a40=1+3=2+6=1-1=2-1=1+d=2-1+9=3-5=1-1=1-2=11-1+f=44+a0027e02165468652063757272656e7420726573756c742069732000=208",
+    "2338b4448ad336a4e7bf5e2044121c21edd96e09695b2ed0f491dd56530372fe",
     AllStructs
   )
 );

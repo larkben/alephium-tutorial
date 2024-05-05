@@ -3,11 +3,12 @@ struct Foo { x: U256, mut y: U256 }
 
 Contract RalphTypes (
     time: U256,       // 326478362478326478 ~ milliseconds
-    condition: Bool,  // True or False
-    text: ByteVec,    // ByteVec = String
+    mut condition: Bool,  // True or False
+    mut text: ByteVec,    // ByteVec = String
     owner: Address,   // Alephium Address @dhjskdhasjkdhasjkdhasjkdhasjkdhjkasdd
     array: [U256; 4], // array = [1,2,3,4]
-    mut result: U256 
+    mut result: U256,
+    mut hash: ByteVec
 ) {
     @using(updateFields = true, checkExternalCaller = false)
     pub fn getTime(x: U256) -> () {
@@ -42,5 +43,25 @@ Contract RalphTypes (
         result = array[x]
 
         return array[x]
-    } 
+    }
+
+    @using(updateFields = true, checkExternalCaller = false)
+    pub fn compareHash(string: ByteVec) -> () { // "apple" -> hashed(apple)
+
+        let shaResult = sha256!(string)
+
+        hash = shaResult
+
+        if (shaResult == text) {
+            condition = true
+        }
+        
+    }
+
+    @using(updateFields = true, checkExternalCaller = false)
+    pub fn updateText(string: ByteVec) -> () {
+
+        text = string
+
+    }
 }
